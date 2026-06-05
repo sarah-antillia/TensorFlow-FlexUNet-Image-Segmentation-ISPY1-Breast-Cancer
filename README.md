@@ -384,7 +384,7 @@ to the ground truth masks.
 <br>
 <br>
 <h3>
-6 3D Volume Inference
+6 3D Volume Segmentation
 </h3>
 Please move to <b>./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer</b> folder
 ,and run the following bat file to infer images segmentation for 2D slices of 3D volume NIfTI files
@@ -407,6 +407,7 @@ output_dir    = "./mini_test_3d_output/"
 slice_shape_order = "hwd"
 slice_normalize = True
 slice_resize   = (512,512)
+;Specify a cv2.rotation mode as a string.
 slice_rotation = "cv2.ROTATE_90_COUNTERCLOCKWISE" 
 
 mask_overlay  = True
