@@ -1,4 +1,4 @@
-<h2>TensorFlow-FlexUNet-Image-Segmentation-ISPY1-Breast-Cancer (2026/06/05)</h2>
+<h2>TensorFlow-FlexUNet-Image-Segmentation-ISPY1-Breast-Cancer (Updated: 2026/06/05)</h2>
 Sarah T. Arai<br>
 Software Laboratory antillia.com<br><br>
 This is the first experiment of Image Segmentation for <b>ISPY1-Breast-Cancer (Benign and Malignant)</b> based on 
@@ -332,7 +332,7 @@ This simply runs the following command.
 <img src="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/asset/mini_test_output.png" width="1024" height="auto"><br>
 <br>
 <hr>
-<b>Enlarged images and masks of ISPY1-Breast-Cancer Images</b><br>
+<b>Enlarged images and masks of ISPY1-Breast-Cancer Images of 512x512 pixels</b><br>
 As shown below, the inferred masks predicted by our segmentation model trained by the dataset appear similar 
 to the ground truth masks.
 <br><br>
@@ -381,6 +381,111 @@ to the ground truth masks.
 </tr>
 </table>
 <hr>
+<br>
+<br>
+<h3>
+6 3D Volume Inference
+</h3>
+Please move to <b>./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer</b> folder
+,and run the following bat file to infer images segmentation for 2D slices of 3D volume NIfTI files
+ by the Trained-TensorFlowFlexUNet model for ISPY1-Breast-Cancer.<br>
+<pre>
+>./5.infer3d.bat
+</pre>
+This simply runs the following command.
+<pre>
+>python ../../../src/TensorFlowFlexUNet3DInferencer.py ./train_eval_infer.config
+</pre>
+<b>infer3d section </b> in <a href="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/train_eval_infer.config">
+train_eval_infer.config
+<a></b>
+<pre>
+[infer3d] 
+;Specify an images_dir which contains NIfTI or NPY files
+images_dir    = "./mini_test_3d/images/"
+output_dir    = "./mini_test_3d_output/"
+slice_shape_order = "hwd"
+slice_normalize = True
+slice_resize   = (512,512)
+slice_rotation = "cv2.ROTATE_90_COUNTERCLOCKWISE" 
+
+mask_overlay  = True
+</pre>
+<hr>
+<b>Acutual Image Segmentation for 2D Slices of a ISPY1-Breast-Cancer NIfTI</b><br>
+Some Slices, Inferred Masks and Mask overlays for a 3D volume <b>ISPY1_1005_DCE_0000_N3_zscored.nii.gz</b> file in 
+<b>ISPY1-Tumor-SEG-Radiomics/NIfTI-Files\images_bias-corrected_resampled_zscored_nifti/ISPY1_1005</b> folder.<br>
+<br>
+<b>class-color-map = {Cancer:dark red}</b>
+<br>
+<table>
+<tr>
+<th>Image</th>
+<th>Inferred-mask</th>
+<th>Mask overlay</th>
+</tr>
+
+<tr>
+<td><img src="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/mini_test_3d_output/ISPY1_1005_DCE_0000_N3_zscored.nii.gz/slices/10034.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/mini_test_3d_output/ISPY1_1005_DCE_0000_N3_zscored.nii.gz/masks/10034.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/mini_test_3d_output/ISPY1_1005_DCE_0000_N3_zscored.nii.gz/overlays/10034.png" width="320" height="auto"></td>
+</tr>
+
+<tr>
+<td><img src="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/mini_test_3d_output/ISPY1_1005_DCE_0000_N3_zscored.nii.gz/slices/10038.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/mini_test_3d_output/ISPY1_1005_DCE_0000_N3_zscored.nii.gz/masks/10038.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/mini_test_3d_output/ISPY1_1005_DCE_0000_N3_zscored.nii.gz/overlays/10038.png" width="320" height="auto"></td>
+</tr>
+<tr>
+<td><img src="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/mini_test_3d_output/ISPY1_1005_DCE_0000_N3_zscored.nii.gz/slices/10041.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/mini_test_3d_output/ISPY1_1005_DCE_0000_N3_zscored.nii.gz/masks/10041.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/mini_test_3d_output/ISPY1_1005_DCE_0000_N3_zscored.nii.gz/overlays/10041.png" width="320" height="auto"></td>
+</tr>
+<tr>
+<td><img src="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/mini_test_3d_output/ISPY1_1005_DCE_0000_N3_zscored.nii.gz/slices/10044.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/mini_test_3d_output/ISPY1_1005_DCE_0000_N3_zscored.nii.gz/masks/10044.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/mini_test_3d_output/ISPY1_1005_DCE_0000_N3_zscored.nii.gz/overlays/10044.png" width="320" height="auto"></td>
+</tr>
+<tr>
+<td><img src="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/mini_test_3d_output/ISPY1_1005_DCE_0000_N3_zscored.nii.gz/slices/10047.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/mini_test_3d_output/ISPY1_1005_DCE_0000_N3_zscored.nii.gz/masks/10047.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/mini_test_3d_output/ISPY1_1005_DCE_0000_N3_zscored.nii.gz/overlays/10047.png" width="320" height="auto"></td>
+</tr>
+<tr>
+<td><img src="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/mini_test_3d_output/ISPY1_1005_DCE_0000_N3_zscored.nii.gz/slices/10086.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/mini_test_3d_output/ISPY1_1005_DCE_0000_N3_zscored.nii.gz/masks/10086.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/mini_test_3d_output/ISPY1_1005_DCE_0000_N3_zscored.nii.gz/overlays/10086.png" width="320" height="auto"></td>
+</tr>
+
+</table>
+<hr>
+<br>
+<h3>
+7 MaskOverlay Video of 3D Volume Segmentation
+</h3>
+Please move to <b>./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer</b> folder, and run the following bat file 
+to generate <b>overlays.mp4</b> or <b>overlay.gif</b> for MaskOverlays of 3D Volume Segmentation. <br>
+<pre>
+>./6.video3d.bat
+</pre>
+This simply runs the following command.
+<pre>
+>python ../../../src/MaskOverlayVideoGenerator.py ./train_eval_infer.config
+</pre>
+<br>
+<b>infer3d section </b> in <a href="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/train_eval_infer.config">
+train_eval_infer.config
+<a></b>
+<pre>
+[infer3d] 
+mask_overlay  = True
+;Specify ".mp4" or ".gif".
+;video_fileformat  = ".mp4"
+video_fileformat  = ".gif"
+</pre>
+<br>
+<b>overlays.gif</b><br>
+<img src="./projects/TensorFlowFlexUNet/ISPY1-Breast-Cancer/video_3d/overlays.gif">
 <br>
 <h3>
 References
